@@ -6,20 +6,25 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 
+// Ruta para pagina de presentacion
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
+// Ruta para login
+Route::get('/login', function() {
+    return view('login');
+});
+
+Route::get('/sign', function() {
+    return view('sign');
+});
+
+/*// Middleware para autenticacion 
 Route::middleware(['auth'])->group(function () {
     Route::resource('orders', OrderController::class);
 });
-
-// Ruta para prueba de navbar
-Route::get('/main', function () {
-    return view('navbar');
-});
-
-
+*/
 // Rutas para productos
 Route::resource('products', ProductController::class);
 
@@ -30,6 +35,6 @@ Route::resource('categories', CategoryController::class);
 Route::resource('orders', OrderController::class);
 Route::patch('orders/{id}/status', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
 
-Auth::routes();
+/*// Autenticacion de rutas
+Auth::routes();*/
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
