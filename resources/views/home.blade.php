@@ -18,16 +18,15 @@
             <div class="flex justify-between h-16">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="#" class="text-2xl font-bold text-emerald-500">
+                    <a href="/" class="text-2xl font-bold text-emerald-500">
                         sow & grow
                     </a>
                 </div>
                 <!-- Botones de navegación -->
                 <div class="hidden md:flex items-center space-x-4">
-                    <a href="#" class="text-gray-600 hover:text-emerald-500">Inicio</a>
                     <a href="#" class="text-gray-600 hover:text-emerald-500">Productos</a>
-                    <a href="#" class="text-gray-600 hover:text-emerald-500">Login</a>
-                    <a href="#"
+                    <a href="/login" class="text-gray-600 hover:text-emerald-500">Login</a>
+                    <a href="/register"
                         class="bg-emerald-500 text-white px-3 py-2 rounded-md hover:bg-emerald-600">Registrarse</a>
                 </div>
                 <!-- Menú hamburguesa para móvil -->
@@ -45,11 +44,9 @@
 
         <!-- Menú desplegable para móvil -->
         <div id="mobile-menu" class="md:hidden hidden">
-            <a href="#" class="block text-gray-600 hover:text-emerald-500 px-4 py-2">Inicio</a>
             <a href="#" class="block text-gray-600 hover:text-emerald-500 px-4 py-2">Productos</a>
-            <a href="#" class="block text-gray-600 hover:text-emerald-500 px-4 py-2">Login</a>
-            <a href="#"
-                class="block bg-emerald-500 text-white px-4 py-2 rounded-md hover:bg-green-600">Registrarse</a>
+            <a href="/login" class="block text-gray-600 hover:text-emerald-500 px-4 py-2">Login</a>
+            <a href="/register" class="block bg-emerald-500 text-white px-4 py-2 rounded-md hover:bg-emerald-600">Registrarse</a>
         </div>
     </nav>
 
@@ -60,7 +57,7 @@
                 <h1 class="text-5xl font-bold mb-4">Bienvenido a sow & grow</h1>
                 <p class="text-xl mb-6">Tu plataforma para comprar e intercambiar plantas, conectarte con otros jardineros y
                     obtener consejos útiles.</p>
-                <a href="#" class="bg-emerald-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg">
+                <a href="/sign" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-lg">
                     ¡Regístrate ahora!
                 </a>
             </div>

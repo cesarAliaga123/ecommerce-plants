@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,7 +9,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * Los atributos que son asignables de manera masiva.
@@ -18,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'surname', 'phone', 'email', 'password', 'user_level_id',
     ];
 
     /**
@@ -67,6 +66,12 @@ class User extends Authenticatable
     // Relación con Órdenes
     public function orders() {
         return $this->hasMany(Order::class);
+    }
+
+    // Relación con niveles de usuario
+    public function userLevel()
+    {
+        return $this->belongsTo(UserLevel::class, 'user_level_id');
     }
 }
 

@@ -19,7 +19,8 @@
                     <h1 class="text-3xl font-bold text-teal-100">sow & grow | Inicia Sesión</h1>
                 </div>
 
-                <form action="#" method="POST">
+                <form action="{{ route('login') }}" method="POST">
+                    @csrf 
                     <div class="mb-4">
                         <label for="email" class="block text-teal-100 text-lg font-bold mb-2">Correo
                             Electrónico</label>
@@ -40,8 +41,9 @@
                     </div>
                     <div class="text-center">
                         <a href="#" class="text-sm text-teal-950 hover:underline">¿Olvidaste tu contraseña?</a>
-                        <p class="mt-2 text-sm">¿No tienes una cuenta? <a href="#"
-                                class="text-teal-900 hover:underline">Regístrate</a></p>
+                        <p class="text-sm">¿No tienes una cuenta? 
+                            <a href="/sign" class="text-teal-900 hover:underline">Regístrate</a></p>
+                        <a href="/" class="text-sm text-teal-900 hover:underline">Volver al inicio</a>
                     </div>
                 </form>
             </div>

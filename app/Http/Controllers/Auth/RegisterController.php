@@ -1,72 +1,57 @@
 <?php
+// app/Http/Controllers/Auth/RegisterController.php
 
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard'; // Redirige después del registro exitoso
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    // Mostrar el formulario de registro
+    public function showRegistrationForm()
     {
-        $this->middleware('guest');
+        return view('auth.sign'); // Cargar la vista del registro de usuarios
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+    // Validación personalizada para los nuevos campos
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],  // Apellidos
+            'phone' => ['required', 'string', 'max:15'],     // Teléfono
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
+    // Crear el usuario con el nivel de usuario asignado automáticamente
     protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
+            'surname' => $data['surname'],     // Guardar apellidos
+            'phone' => $data['phone'],         // Guardar teléfono
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'user_level_id' => 2, // Asignar el nivel de "usuario" automáticamente (asumido 2 para usuario)
         ]);
     }
+
+     // Sobrescribir el método de redirección según el tipo de usuario
+     protected function redirectTo()
+     {
+         return '/user/dashboard'; // Redirigir a la página del usuario después del registro
+     }
 }
+
+
+
